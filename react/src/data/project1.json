@@ -1,0 +1,184 @@
+{
+  "timelineName": "Project 1",
+  "phases": [
+    {
+      "name": "Phase 1",
+      "groups": [
+        {
+          "name": "Group 1.1",
+          "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+          "events": [
+            {
+              "name": "Event 1.1.1",
+              "description": "Date the Proponent notifies the CER of certain upcoming applications.",
+              "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+              "dateStart": "2020-05-29",
+              "dateEnd": null,
+              "dateDue": false,
+              "links": [
+                {
+                  "description": "Link 1",
+                  "href": "https://cer-rec.gc.ca"
+                }
+              ]
+            },
+            {
+              "name": "Event 1.1.2",
+              "description": "Date the CER provides a receipt of project notification to the proponent to confirm the initial list of potentially affected people and communities, and determine the extent, scope and need of any CER-led engagement.",
+              "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+              "dateStart": "2020-05-29",
+              "dateEnd": null,
+              "dateDue": false,
+              "links": [
+                {
+                  "description": "Link 1",
+                  "href": "https://cer-rec.gc.ca"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Group 1.2",
+          "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+          "events": [
+            {
+              "name": "Event 1.2.1",
+              "description": "Date of the CER letter to Indigenous communities to start early engagement and Crown consultation activities on the Project.",
+              "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+              "dateStart": "2021-06-01",
+              "dateEnd": "",
+              "dateDue": false,
+              "links": [
+                {
+                  "description": "Link 1",
+                  "href": "https://cer-rec.gc.ca"
+                },
+                {
+                  "description": "Link 2",
+                  "href": "https://cer-rec.gc.ca"
+                }
+              ]
+            },
+            {
+              "name": "Event 1.2.2",
+              "description": "CER-led information sessions explaining the role of the CER and the Commission’s hearing process.",
+              "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+              "dateStart": "2021-06-01",
+              "dateEnd": "",
+              "dateDue": false,
+              "links": [
+                {
+                  "description": "Link 1",
+                  "href": "https://cer-rec.gc.ca"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Phase 2",
+      "groups": [
+        {
+          "name": "Group 2.1",
+          "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+          "events": [
+            {
+              "name": "Event 2.1.1",
+              "description": "Deadline for Proponent to provides any further evidence (in addition to its application) in support of its application.",
+              "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+              "dateStart": "2021-05-11",
+              "dateEnd": "",
+              "dateDue": false,
+              "links": [
+                {
+                  "description": "Link 1",
+                  "href": "https://cer-rec.gc.ca"
+                },
+                {
+                  "description": "Link 2",
+                  "href": "https://cer-rec.gc.ca"
+                }
+              ]
+            },
+            {
+              "name": "Event 2.1.2",
+              "description": "Deadline for Intervenors to provide complete evidence to support their position in regard to the application.",
+              "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+              "dateStart": "2021-09-01",
+              "dateEnd": "",
+              "dateDue": true,
+              "links": [
+                {
+                  "description": "Link 2",
+                  "href": "https://cer-rec.gc.ca"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Group 2.2",
+          "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+          "events": [
+            {
+              "name": "Event 2.2.1",
+              "description": "Deadline for Indigenous people to file a notice of intent to participate in Indigenous Oral Knowledge Session.",
+              "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+              "dateStart": "2021-07-27",
+              "dateEnd": "",
+              "dateDue": true,
+              "links": [
+                {
+                  "description": "Link 1",
+                  "href": "https://cer-rec.gc.ca"
+                }
+              ]
+            },
+            {
+              "name": "Event 2.2.2",
+              "description": "Start date for Indigenous peoples who are Intervenors to present their knowledge orally.",
+              "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+              "dateStart": "2021-09-07",
+              "dateEnd": "2021-09-15",
+              "dateDue": false,
+              "links": [
+                {
+                  "description": "Link 1",
+                  "href": "https://cer-rec.gc.ca"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Phase 3",
+      "groups": [
+        {
+          "name": "Group 3.1",
+          "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+          "events": [
+            {
+              "name": "Event 3.1.1",
+              "description": "The date derived by the Canadian Regulator Act time limit provisions for the Commission of the Canada Energy Regulatory (Commission) to release its Report to GIC or its Decision.",
+              "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+              "dateStart": "2022-06-19",
+              "dateEnd": null,
+              "dateDue": false,
+              "links": [
+                {
+                  "description": "Link 1",
+                  "href": "https://cer-rec.gc.ca"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
