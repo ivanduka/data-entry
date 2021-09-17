@@ -14,4 +14,24 @@
       <_ContentIncludedByDefault Remove="react\react\src\data\example.json" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="react\node_modules\bootstrap\**" />
+      <Compile Remove="react\node_modules\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="react\node_modules\bootstrap\**" />
+      <EmbeddedResource Remove="react\node_modules\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="react\node_modules\bootstrap\**" />
+      <None Remove="react\node_modules\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="react\node_modules\bootstrap\**" />
+      <Content Remove="react\node_modules\**" />
+    </ItemGroup>
+
 </Project>
