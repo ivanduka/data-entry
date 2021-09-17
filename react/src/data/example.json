@@ -1,0 +1,640 @@
+{
+  "error": null,
+  "data": {
+    "timelineName": "Nova Gas Transmission Ltd. - West Path Delivery 2023",
+    "phases": [
+      {
+        "name": "Pre-Application",
+        "groups": [
+          {
+            "name": "Notification",
+            "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+            "events": [
+              {
+                "name": "Notification by Proponent Field",
+                "description": "Date the Proponent notifies the CER of certain upcoming applications.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2020-05-29",
+                "dateEnd": null,
+                "dateDue": false,
+                "links": [
+                  {
+                    "description": "See document",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              },
+              {
+                "name": "CER Receipt of Notification to Proponent",
+                "description": "Date the CER provides a receipt of project notification to the proponent to confirm the initial list of potentially affected people and communities, and determine the extent, scope and need of any CER-led engagement.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2020-05-29",
+                "dateEnd": null,
+                "dateDue": false,
+                "links": [
+                  {
+                    "description": "See document",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Early Engagement",
+            "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+            "events": [
+              {
+                "name": "CER Letter to Crown List for Early Engagement",
+                "description": "Date of the CER letter to Indigenous communities to start early engagement and Crown consultation activities on the Project.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2021-06-01",
+                "dateEnd": "",
+                "dateDue": false,
+                "links": [
+                  {
+                    "description": "See document",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              },
+              {
+                "name": "Early Engagement Information Sessions",
+                "description": "CER-led information sessions explaining the role of the CER and the Commission’s hearing process.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2021-06-01",
+                "dateEnd": "",
+                "dateDue": false,
+                "links": [
+                  {
+                    "description": "See document",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              },
+              {
+                "name": "Summary of CER Early Engagement and Crown Consultation Activities",
+                "description": "A summary of the issues the CER heard during its early engagement activities with the public and Indigenous peoples.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2021-06-01",
+                "dateEnd": "",
+                "dateDue": false,
+                "links": [
+                  {
+                    "description": "See document",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Application",
+            "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+            "events": [
+              {
+                "name": "Application by Proponent Filed",
+                "description": "The date the proponent electronically files their application with the CER.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2020-10-22",
+                "dateEnd": "",
+                "dateDue": false,
+                "links": [
+                  {
+                    "description": "See document",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              },
+              {
+                "name": "Comments on Draft List of Issue",
+                "description": "A draft list of issues are submitted during this date.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2020-10-22",
+                "dateEnd": "",
+                "dateDue": false,
+                "links": [
+                  {
+                    "description": "See document",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              },
+              {
+                "name": "Register to Participate Open to Due date",
+                "description": "Deadline the public must register to participate. There are two ways individuals or groups may participate in a hearing: by writing a Letter of Comment or as an Intervenor.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2020-10-02",
+                "dateEnd": "2020-10-22",
+                "dateDue": false,
+                "links": [
+                  {
+                    "description": "Learn more",
+                    "href": "https://cer-rec.gc.ca"
+                  },
+                  {
+                    "description": "Register to Participate",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              },
+              {
+                "name": "Apply for Funding",
+                "description": "Last business day to apply for funding for Participants. CER administers a Participant Funding Program (PFP) to facilitate the participation of the public — and, in particular, the Indigenous peoples of Canada and Indigenous organizations",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2020-10-22",
+                "dateEnd": "",
+                "dateDue": false,
+                "links": [
+                  {
+                    "description": "Link to Apply",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Workshops",
+            "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+            "events": [
+              {
+                "name": "Register for Workshop Deadline",
+                "description": "Registration deadline for the hearing workshop.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2021-11-02",
+                "dateEnd": "",
+                "dateDue": false,
+                "links": [
+                  {
+                    "description": "Register for Workshop",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              },
+              {
+                "name": "CER Workshop",
+                "description": "Date of the hearing workshop, which is an opportunity for participants to provide comments on the hearing process and the draft list of issues.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2021-04-30",
+                "dateEnd": "",
+                "dateDue": false,
+                "links": [
+                  {
+                    "description": "See Final Workshop Report",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Hearing Order",
+            "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+            "events": [
+              {
+                "name": "Completeness Date",
+                "description": "Date on which the Commission determines that the Application is sufficiently complete to undertake the assessment.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2021-01-10",
+                "dateEnd": "",
+                "dateDue": true,
+                "links": [
+                  {
+                    "description": "See Document",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              },
+              {
+                "name": "Hearing Order Release Date",
+                "description": "The Commission releases this Hearing Order to explain the process steps and schedule for the assessment process.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2021-04-30",
+                "dateEnd": "",
+                "dateDue": false,
+                "links": [
+                  {
+                    "description": "See Document",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Assessment",
+        "groups": [
+          {
+            "name": "Written Evidence",
+            "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+            "events": [
+              {
+                "name": "Proponent Additional Evidence",
+                "description": "Deadline for Proponent to provides any further evidence (in addition to its application) in support of its application.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2021-05-11",
+                "dateEnd": "",
+                "dateDue": false,
+                "links": [
+                  {
+                    "description": "See Document",
+                    "href": "https://cer-rec.gc.ca"
+                  },
+                  {
+                    "description": "See Past Examples",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              },
+              {
+                "name": "Intervenor Evidence",
+                "description": "Deadline for Intervenors to provide complete evidence to support their position in regard to the application.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2021-09-01",
+                "dateEnd": "",
+                "dateDue": true,
+                "links": [
+                  {
+                    "description": "See templates and examples",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              },
+              {
+                "name": "Complainant Evidence",
+                "description": "Deadline for Complainant to provides complete written evidence to support their position in regard to the application.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2021-09-01",
+                "dateEnd": "",
+                "dateDue": true,
+                "links": [
+                  {
+                    "description": "See templates and examples",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              },
+              {
+                "name": "Comments on Draft Conditions",
+                "description": "Deadline for the Proponent and all Intervenors to comment on potential conditions floated by the Commission.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2021-06-01",
+                "dateEnd": "",
+                "dateDue": false,
+                "links": [
+                  {
+                    "description": "See examples",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Oral Indigenous Knowledge",
+            "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+            "events": [
+              {
+                "name": "Register for Oral Indigenous Knowledge Sessions",
+                "description": "Deadline for Indigenous people to file a notice of intent to participate in Indigenous Oral Knowledge Session.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2021-07-27",
+                "dateEnd": "",
+                "dateDue": true,
+                "links": [
+                  {
+                    "description": "Go to Registration Form",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              },
+              {
+                "name": "Oral Indigenous Knowledge Session Date",
+                "description": "Start date for Indigenous peoples who are Intervenors to present their knowledge orally.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2021-09-07",
+                "dateEnd": "2021-09-15",
+                "dateDue": false,
+                "links": [
+                  {
+                    "description": "See details",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Letters of Comment",
+            "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+            "events": [
+              {
+                "name": "Letter of Comment",
+                "description": "Deadline for commenters to file their letter of comment.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2021-10-07",
+                "dateEnd": "",
+                "dateDue": true,
+                "links": [
+                  {
+                    "description": "See templates and examples",
+                    "href": "https://cer-rec.gc.ca"
+                  },
+                  {
+                    "description": "Go to participation portal",
+                    "href": "https://cer-rec.gc.ca"
+                  },
+                  {
+                    "description": "Go to CER Account",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Information Requests",
+            "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+            "events": [
+              {
+                "name": "Information Request to Proponent No. 1",
+                "description": "Deadline for Intervenors or file Information Requests to the Proponent and other Intervenors.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2021-05-23",
+                "dateEnd": "",
+                "dateDue": false,
+                "links": [
+                  {
+                    "description": "See Document",
+                    "href": "https://cer-rec.gc.ca"
+                  },
+                  {
+                    "description": "See Document",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              },
+              {
+                "name": "Reply to Information Request from Proponent No. 1",
+                "description": "Deadline for Proponent to file responses to Information Requests.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2022-06-10",
+                "dateEnd": "",
+                "dateDue": false,
+                "links": [
+                  {
+                    "description": "See Document",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              },
+              {
+                "name": "Information Request to Intervenor",
+                "description": "Deadline for Proponent to file Information Requests to Intervenors.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2021-09-23",
+                "dateEnd": "",
+                "dateDue": true,
+                "links": [
+                  {
+                    "description": "See templates and examples",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              },
+              {
+                "name": "Reply to Information Request from Intervenor",
+                "description": "Deadline for Intervenors to file responses to all Information Requests.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2021-10-10",
+                "dateEnd": "",
+                "dateDue": true,
+                "links": [
+                  {
+                    "description": "See examples",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              },
+              {
+                "name": "Information Request to Complainant",
+                "description": "Deadline to file Information Requests to the Complainant",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2021-09-23",
+                "dateEnd": "",
+                "dateDue": true,
+                "links": [
+                  {
+                    "description": "See templates and examples",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              },
+              {
+                "name": "Reply to IR to Complainant",
+                "description": "Deadline for Complainant to file responses to all Information Requests.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2021-10-10",
+                "dateEnd": "",
+                "dateDue": true,
+                "links": [
+                  {
+                    "description": "See templates and examples",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              },
+              {
+                "name": "Information Request to Proponent No. 2",
+                "description": "Deadline for Intervenors or file Information Requests to the Proponent and other Intervenors.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2021-10-18",
+                "dateEnd": "",
+                "dateDue": true,
+                "links": [
+                  {
+                    "description": "See templates and examples",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              },
+              {
+                "name": "Reply to Information Request from Proponent No. 2",
+                "description": "Deadline for Proponent to file responses to Information Requests.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2021-12-02",
+                "dateEnd": "",
+                "dateDue": false,
+                "links": [
+                  {
+                    "description": "See templates and examples",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Oral Cross-Examination",
+            "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+            "events": [
+              {
+                "name": "Oral Cross-Examination Start Date",
+                "description": "The day when oral cross-examination begins. During cross-examination, parties may ask questions of other parties about their evidence. ",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2021-10-02",
+                "dateEnd": "",
+                "dateDue": true,
+                "links": [
+                  {
+                    "description": "Hear past examples",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Crown Submission",
+            "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+            "events": [
+              {
+                "name": "Crown Consultation Submission",
+                "description": "Deadline for the CER Crown Consultation Team to submit its report. The report reflects the supplemental engagement and consultation activities undertaken with Indigenous peoples for the Project.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2021-10-28",
+                "dateEnd": "",
+                "dateDue": true,
+                "links": []
+              }
+            ]
+          },
+          {
+            "name": "Reply Evidence",
+            "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+            "events": [
+              {
+                "name": "Proponent Reply Evidence Due Date",
+                "description": "Deadline for the Proponent to file evidence in reply to evidence filed by other Parties.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2021-10-04",
+                "dateEnd": "",
+                "dateDue": true,
+                "links": [
+                  {
+                    "description": "See past examples",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              },
+              {
+                "name": "Complainant Reply Due Date",
+                "description": "Deadline for the Complainant to file any reply to evidence filed by other participants.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2022-01-10",
+                "dateEnd": "",
+                "dateDue": true,
+                "links": [
+                  {
+                    "description": "See past examples",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Argument",
+            "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+            "events": [
+              {
+                "name": "Proponent Argument",
+                "description": "Date for the Proponent to provide argument, in which the Proponent puts forward its position, based on the evidence on the hearing record, in order to sway the Commission to decide the application in their favour.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2021-12-14",
+                "dateEnd": "",
+                "dateDue": false,
+                "links": [
+                  {
+                    "description": "See examples",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              },
+              {
+                "name": "Intervenor Argument",
+                "description": "Date for Intervenors to provide argument, in which the Intervenors puts forward their position, based on the evidence on the hearing record, in order to sway the Commission to decide the application in their favour.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2022-01-10",
+                "dateEnd": "",
+                "dateDue": false,
+                "links": [
+                  {
+                    "description": "Learn more",
+                    "href": "https://cer-rec.gc.ca"
+                  },
+                  {
+                    "description": "See templates and examples",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              },
+              {
+                "name": "Proponent Reply Argument",
+                "description": "Date for Proponent to file argument in reply to the argument provided by the Intervenors.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2022-01-17",
+                "dateEnd": "2022-01-23",
+                "dateDue": false,
+                "links": [
+                  {
+                    "description": "See examples",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              },
+              {
+                "name": "Close of Record Date",
+                "description": "The date of close of final argument (or submission of any subsequent undertakings). On this day, the record is closed, and no further evidence or submissions will be accepted.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2022-03-27",
+                "dateEnd": "",
+                "dateDue": false,
+                "links": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Decision",
+        "groups": [
+          {
+            "name": "Report or Decision",
+            "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+            "events": [
+              {
+                "name": "Decision or Report Target Date",
+                "description": "The date derived by the Canadian Regulator Act time limit provisions for the Commission of the Canada Energy Regulatory (Commission) to release its Report to GIC or its Decision.",
+                "icon": "https://cer-rec.gc.ca/images/whatever.svg",
+                "dateStart": "2022-06-19",
+                "dateEnd": null,
+                "dateDue": false,
+                "links": [
+                  {
+                    "description": "Learn more",
+                    "href": "https://cer-rec.gc.ca"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+
