@@ -93,7 +93,7 @@ function App() {
   const projectSelector = (
     <DropdownButton title={currProjName || "Choose a project"}>
       {projectsList.map((p) => (
-        <Dropdown.Item as="button" onClick={() => setCurrProjName(p)}>
+        <Dropdown.Item key={p} as="button" onClick={() => setCurrProjName(p)}>
           {p}
         </Dropdown.Item>
       ))}
