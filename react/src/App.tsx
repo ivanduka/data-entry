@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import project1 from "./data/project1.json";
 import project2 from "./data/project2.json";
 import { Spinner, DropdownButton, Dropdown } from "react-bootstrap";
+import { cloneDeep, isEqual } from "lodash-es";
 
 const run = (f: () => void) => {
   (async () => {
@@ -29,12 +30,19 @@ const db: { [name: string]: ITimeline } = {
   "Nova Gas Transmission Ltd. - West Path Delivery 2023": project2,
 };
 
-const loadProjectsList = () => {
+const loadProjectsList = async () => {
+  await wait(1);
   return Object.keys(db);
 };
 
-const loadProject = (name: string) => {
-  return db[name];
+const loadProject = async (name: string) => {
+  await wait(1);
+  return cloneDeep(db[name]);
+};
+
+const saveProject = async (name: string, project: ITimeline) => {
+  await wait(1);
+  db[name] = cloneDeep(project);
 };
 
 interface ITimeline {
@@ -63,14 +71,13 @@ interface ITimeline {
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const [projectsList, setProjectsList] = useState<string[]>([]);
-  const [currProjName, setCurrProjName] = useState<string | null>(null);
   const [currProj, setCurrProj] = useState<ITimeline | null>(null);
+  const [proto, setProto] = useState<ITimeline | null>(null);
 
   useEffect(
     () =>
       run(async () => {
-        const projectsList = loadProjectsList();
-        await wait(1);
+        const projectsList = await loadProjectsList();
         setProjectsList(projectsList);
       }),
     []
@@ -78,11 +85,18 @@ function App() {
 
   useDidMountEffect(() => {
     setLoading(false);
-  }, [projectsList]);
+  }, [projectsList, currProj]);
 
-  if (loading || !projectsList) {
+  const getProject = async (name: string) => {
+    setLoading(true);
+    const proj = await loadProject(name);
+    setCurrProj(proj);
+    setProto(cloneDeep(proj));
+  };
+
+  if (loading) {
     return (
-      <div className="m-1">
+      <div className="container m-2">
         <Spinner animation="border" variant="primary">
           <span className="visually-hidden">Loading...</span>
         </Spinner>
@@ -90,17 +104,27 @@ function App() {
     );
   }
 
-  const projectSelector = (
-    <DropdownButton title={currProjName || "Choose a project"}>
+  const projectSelector = projectsList && (
+    <DropdownButton
+      className="my-2"
+      title={(currProj && currProj.timelineName) || "Choose a project"}
+    >
       {projectsList.map((p) => (
-        <Dropdown.Item key={p} as="button" onClick={() => setCurrProjName(p)}>
+        <Dropdown.Item key={p} as="button" onClick={() => getProject(p)}>
           {p}
         </Dropdown.Item>
       ))}
     </DropdownButton>
   );
 
-  return <div className="container m-2">{projectSelector}</div>;
+  const projectInfo = currProj && <div>{currProj.phases.length}</div>;
+
+  return (
+    <div className="container m-2">
+      <div>{projectSelector}</div>
+      <div>{projectInfo}</div>
+    </div>
+  );
 }
 
 export default App;

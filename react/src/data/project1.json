@@ -154,31 +154,6 @@
           ]
         }
       ]
-    },
-    {
-      "name": "Phase 3",
-      "groups": [
-        {
-          "name": "Group 3.1",
-          "icon": "https://cer-rec.gc.ca/images/whatever.svg",
-          "events": [
-            {
-              "name": "Event 3.1.1",
-              "description": "The date derived by the Canadian Regulator Act time limit provisions for the Commission of the Canada Energy Regulatory (Commission) to release its Report to GIC or its Decision.",
-              "icon": "https://cer-rec.gc.ca/images/whatever.svg",
-              "dateStart": "2022-06-19",
-              "dateEnd": null,
-              "dateDue": false,
-              "links": [
-                {
-                  "description": "Link 1",
-                  "href": "https://cer-rec.gc.ca"
-                }
-              ]
-            }
-          ]
-        }
-      ]
     }
   ]
 }
