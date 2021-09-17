@@ -123,25 +123,18 @@ function App() {
       <div>
         {currProj.phases.map((phase, phaseIndex) => (
           <div className="border-24 border-2 border-black rounded-2 p-2 mb-16 bg-red-200">
-            <div className="font-bold mb-2">
-              Phase {phaseIndex + 1} of {currProj.phases.length}
-            </div>
-            <div className="">{bold("Name: ", phase.name)}</div>
-            <div className="ml-6 mt-8">
+            <div className="mb-4">{bold(phase.name, ` (phase ${phaseIndex + 1} of ${currProj.phases.length})`)}</div>
+            <div className="ml-6">
               {phase.groups.map((group, groupIndex) => (
                 <div className="border-2 border-black rounded-2 p-2 mb-16 bg-blue-200">
-                  <div className="font-bold mb-2">
-                    Group {groupIndex + 1} of {phase.groups.length}
-                  </div>
-                  <div className="">{bold("Name: ", group.name)}</div>
+                  <div className="mb-4">{bold(group.name, ` (group ${groupIndex + 1} of ${phase.groups.length})`)}</div>
                   <div className="">{bold("Icon: ", group.icon)}</div>
-                  <div className="ml-6 mt-8">
+                  <div className="ml-6 mt-3">
                     {group.events.map((event, eventIndex) => (
                       <div className="border-2 border-black rounded-2 p-2 mb-16 bg-green-200">
-                        <div className="font-bold mb-3">
-                          Event {eventIndex + 1} of {group.events.length}
+                        <div className="mb-4">
+                          {bold(event.name, ` (event ${eventIndex + 1} of ${group.events.length})`)}
                         </div>
-                        <div className="">{bold("Name: ", event.name)}</div>
                         <div className="">{bold("Description: ", event.description)}</div>
                         <div className="">{bold("Icon: ", event.icon)}</div>
                         <div className="">{bold("Start date: ", event.dateStart)}</div>
@@ -150,10 +143,9 @@ function App() {
                         <div className="ml-6 mt-2">
                           {event.links.map((link, linkIndex) => (
                             <div className="border-2 border-black rounded-2 p-2 mb-2 bg-yellow-100">
-                              <div className="font-bold mb-2">
-                                Link {linkIndex + 1} of {event.links.length}
+                              <div className="">
+                                {bold(link.description, ` (link ${linkIndex + 1} of ${event.links.length})`)}{" "}
                               </div>
-                              <div className="">{bold("Label: ", link.description)} </div>
                               <div className="">{bold("URL: ", link.href)}</div>
                             </div>
                           ))}
