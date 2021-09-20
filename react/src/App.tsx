@@ -230,6 +230,23 @@ function App() {
     setCurrProj(cp);
   };
 
+  const editProject = () => {
+    if (currProj === null) return;
+    const result = window.prompt("Enter the new project name", currProj.timelineName) || currProj.timelineName;
+    const cp = cloneDeep(currProj);
+    cp.timelineName = result;
+    setCurrProj(cp);
+  };
+
+  const editPhase = (phaseIdx: number) => {
+    if (currProj === null) return;
+    const name = currProj.phases[phaseIdx].name;
+    const result = window.prompt("Enter the new project name", name) || name;
+    const cp = cloneDeep(currProj);
+    cp.phases[phaseIdx].name = result;
+    setCurrProj(cp);
+  };
+
   if (loading) {
     return (
       <div className="container m-2 mx-auto flex justify-center justify-center">
@@ -252,7 +269,12 @@ function App() {
 
   const projectInfo = currProj && (
     <div>
-      <div className="my-4">{bold("Project: ", currProj.timelineName)}</div>
+      <div className="flex items-center my-4">
+        <div className="font-bold">{currProj.timelineName}</div>
+        <Button className="ml-2" variant="primary" size="sm" onClick={() => editProject()}>
+          Edit name
+        </Button>
+      </div>
       <div>
         {currProj.phases.map((phase, phaseIndex) => (
           <div className="border-24 border-2 border-black rounded-2 p-2 mb-16 bg-red-200" key={phase.name}>
@@ -284,6 +306,9 @@ function App() {
                 disabled={phaseIndex === currProj.phases.length - 1}
               >
                 Down
+              </Button>
+              <Button className="ml-2" variant="primary" size="sm" onClick={() => editPhase(phaseIndex)}>
+                Edit name
               </Button>
             </div>
             <div className="ml-6">
