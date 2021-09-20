@@ -23,22 +23,29 @@ const wait = async (seconds: number) => new Promise<void>((resolve) => setTimeou
 
 const db: IProject[] = [project1, project2];
 
+const waitingTime = 0.5
+
 const DBLoadProjectsList = async () => {
-  await wait(0.5);
+  await wait(waitingTime);
   return db.map((project) => ({ name: project.name, id: project.id }));
 };
 
 const DBLoadProject = async (id: number) => {
-  await wait(0.5);
+  await wait(waitingTime);
   const project = db.find((p) => p.id === id)!;
   return cloneDeep(project);
 };
 
 const DBSaveProject = async (project: IProject) => {
-  await wait(0.5);
+  await wait(waitingTime);
   const index = db.findIndex((p) => p.id === project.id);
   db[index] = project;
 };
+
+const DBAddProject = async(project: IProject) => {
+  await wait(waitingTime);
+  db.push(project)
+}
 
 interface ILink {
   description: string;
@@ -234,23 +241,23 @@ function App() {
     phases: [cloneDeep(phasePlaceholder)],
   };
 
-  const addProject = async (name: string) => {
+  const addProject = async () => {
     const newProject = cloneDeep(projectPlaceholder);
     newProject.id = Math.random();
-    const result = window.prompt("Enter the new project name", name);
+    const result = window.prompt("Enter the new project name");
     if (result) {
+      setLoading(true);
       newProject.name = result;
-      await DBSaveProject(newProject);
-      await DBLoadProject(newProject.id);
+      await DBAddProject(newProject);
+      await getProjectsList();
+      await getProject(newProject.id);
     }
   };
 
   const resetProject = async () => {
     if (currProj === null) return;
     setLoading(true);
-    console.log(1)
     await getProject(currProj.id);
-    console.log(2)
   };
 
   const editProject = () => {
@@ -296,7 +303,7 @@ function App() {
           </Dropdown.Item>
         ))}
       </DropdownButton>
-      {!isEqual(currProj, proto) && (
+      {!isEqual(currProj, proto) ? (
         <>
           <Button className="ml-2" variant="secondary" size="sm" onClick={commitChanges}>
             Save changes
@@ -305,6 +312,10 @@ function App() {
             Reset
           </Button>
         </>
+      ) : (
+        <Button className="ml-2" variant="secondary" size="sm" onClick={addProject}>
+          Add a new project
+        </Button>
       )}
     </div>
   );
