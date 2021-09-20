@@ -362,46 +362,48 @@ function App() {
                         <div className="">{bold("End date: ", event.dateEnd || "none")}</div>
                         <div className="">{bold("Event due: ", event.dateDue ? "yes" : "no")}</div>
                         <div className="ml-6 mt-2">
-                          {event.links.map((link, linkIndex) => (
-                            <div className="border-2 border-black rounded-2 p-2 mb-2 bg-yellow-100" key={linkIndex}>
-                              <div className="flex items-center mb-4">
-                                <div className="">
-                                  {bold(link.description, ` (link ${linkIndex + 1} of ${event.links.length})`)}{" "}
+                          {event.links.length === 0
+                            ? "(no links added)"
+                            : event.links.map((link, linkIndex) => (
+                                <div className="border-2 border-black rounded-2 p-2 mb-2 bg-yellow-100" key={linkIndex}>
+                                  <div className="flex items-center mb-4">
+                                    <div className="">
+                                      {bold(link.description, ` (link ${linkIndex + 1} of ${event.links.length})`)}{" "}
+                                    </div>
+                                    <Button
+                                      className="ml-2"
+                                      variant="danger"
+                                      size="sm"
+                                      onClick={() => removeLink(phaseIndex, groupIndex, eventIndex, linkIndex)}
+                                    >
+                                      Remove
+                                    </Button>
+                                    <Button
+                                      className="ml-2"
+                                      variant="warning"
+                                      size="sm"
+                                      onClick={() => moveLink(+1, phaseIndex, groupIndex, eventIndex, linkIndex)}
+                                      disabled={linkIndex === 0}
+                                    >
+                                      Up
+                                    </Button>
+                                    <Button
+                                      className="ml-2"
+                                      variant="warning"
+                                      size="sm"
+                                      onClick={() => moveLink(-1, phaseIndex, groupIndex, eventIndex, linkIndex)}
+                                      disabled={
+                                        linkIndex ===
+                                        currProj.phases[phaseIndex].groups[groupIndex].events[eventIndex].links.length -
+                                          1
+                                      }
+                                    >
+                                      Down
+                                    </Button>
+                                  </div>
+                                  <div className="">{bold("URL: ", link.href)}</div>
                                 </div>
-                                <Button
-                                  className="ml-2"
-                                  variant="danger"
-                                  size="sm"
-                                  onClick={() => removeLink(phaseIndex, groupIndex, eventIndex, linkIndex)}
-                                >
-                                  Remove
-                                </Button>
-                                <Button
-                                  className="ml-2"
-                                  variant="warning"
-                                  size="sm"
-                                  onClick={() => moveLink(+1, phaseIndex, groupIndex, eventIndex, linkIndex)}
-                                  disabled={linkIndex === 0}
-                                >
-                                  Up
-                                </Button>
-                                <Button
-                                  className="ml-2"
-                                  variant="warning"
-                                  size="sm"
-                                  onClick={() => moveLink(-1, phaseIndex, groupIndex, eventIndex, linkIndex)}
-                                  disabled={
-                                    linkIndex ===
-                                    currProj.phases[phaseIndex].groups[groupIndex].events[eventIndex].links.length - 1
-                                  }
-                                >
-                                  Down
-                                </Button>
-                              </div>
-
-                              <div className="">{bold("URL: ", link.href)}</div>
-                            </div>
-                          ))}
+                              ))}
 
                           <div className="my-2">
                             <Button
