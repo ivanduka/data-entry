@@ -1,67 +1,67 @@
-import React, { useEffect, useRef, useState } from "react"
-import project1 from "./data/project1.json"
-import project2 from "./data/project2.json"
-import { Spinner, DropdownButton, Dropdown, Button } from "react-bootstrap"
-import { cloneDeep, isEqual } from "lodash-es"
+import React, { useEffect, useRef, useState } from "react";
+import project1 from "./data/project1.json";
+import project2 from "./data/project2.json";
+import { Spinner, DropdownButton, Dropdown, Button } from "react-bootstrap";
+import { cloneDeep, isEqual } from "lodash-es";
 
 const run = (f: () => void) => {
-  ;(async () => {
-    f()
-  })()
-}
+  (async () => {
+    f();
+  })();
+};
 
 const useDidMountEffect = (func: () => void, deps: React.DependencyList | undefined) => {
-  const didMount = useRef(false)
+  const didMount = useRef(false);
 
   useEffect(() => {
-    if (didMount.current) func()
-    else didMount.current = true
-  }, deps)
-}
+    if (didMount.current) func();
+    else didMount.current = true;
+  }, deps);
+};
 
-const wait = async (seconds: number) => new Promise<void>((resolve) => setTimeout(() => resolve(), seconds * 1000))
+const wait = async (seconds: number) => new Promise<void>((resolve) => setTimeout(() => resolve(), seconds * 1000));
 
 const db: { [name: string]: ITimeline } = {
   "Project 1": project1,
   "Nova Gas Transmission Ltd. - West Path Delivery 2023": project2,
-}
+};
 
 const loadProjectsList = async () => {
-  await wait(0)
-  return Object.keys(db)
-}
+  await wait(0);
+  return Object.keys(db);
+};
 
 const loadProject = async (name: string) => {
-  await wait(0)
-  return cloneDeep(db[name])
-}
+  await wait(0);
+  return cloneDeep(db[name]);
+};
 
 const saveProject = async (name: string, project: ITimeline) => {
-  await wait(0)
-  db[name] = cloneDeep(project)
-}
+  await wait(0);
+  db[name] = cloneDeep(project);
+};
 
 interface ITimeline {
-  timelineName: string
+  timelineName: string;
   phases: {
-    name: string
+    name: string;
     groups: {
-      name: string
-      icon: string
+      name: string;
+      icon: string;
       events: {
-        name: string
-        description: string
-        icon: string
-        dateStart: string
-        dateEnd: string | null
-        dateDue: boolean
+        name: string;
+        description: string;
+        icon: string;
+        dateStart: string;
+        dateEnd: string | null;
+        dateDue: boolean;
         links: {
-          description: string
-          href: string
-        }[]
-      }[]
-    }[]
-  }[]
+          description: string;
+          href: string;
+        }[];
+      }[];
+    }[];
+  }[];
 }
 
 const bold = (label: string, value: string) => (
@@ -69,61 +69,104 @@ const bold = (label: string, value: string) => (
     <span className="font-bold">{label}</span>
     {value}
   </>
-)
+);
 
 function App() {
-  const [loading, setLoading] = useState<boolean>(true)
-  const [projectsList, setProjectsList] = useState<string[]>([])
-  const [currProj, setCurrProj] = useState<ITimeline | null>(null)
-  const [proto, setProto] = useState<ITimeline | null>(null)
+  const [loading, setLoading] = useState<boolean>(true);
+  const [projectsList, setProjectsList] = useState<string[]>([]);
+  const [currProj, setCurrProj] = useState<ITimeline | null>(null);
+  const [proto, setProto] = useState<ITimeline | null>(null);
 
   useEffect(
     () =>
       run(async () => {
-        const projectsList = await loadProjectsList()
-        setProjectsList(projectsList)
+        const projectsList = await loadProjectsList();
+        setProjectsList(projectsList);
       }),
     [],
-  )
+  );
 
   useDidMountEffect(() => {
-    setLoading(false)
-  }, [projectsList, currProj])
+    setLoading(false);
+  }, [projectsList, currProj]);
 
   const getProject = async (name: string) => {
-    setLoading(true)
-    const proj = await loadProject(name)
-    setCurrProj(proj)
-    setProto(cloneDeep(proj))
-  }
+    setLoading(true);
+    const proj = await loadProject(name);
+    setCurrProj(proj);
+    setProto(cloneDeep(proj));
+  };
 
   const removePhase = (phaseIdx: number) => {
-    if (currProj === null) return
-    const cp = cloneDeep(currProj)
-    cp.phases.splice(phaseIdx, 1)
-    setCurrProj(cp)
-  }
+    if (currProj === null) return;
+    const cp = cloneDeep(currProj);
+    cp.phases.splice(phaseIdx, 1);
+    setCurrProj(cp);
+  };
 
   const removeGroup = (phaseIdx: number, groupIdx: number) => {
-    if (currProj === null) return
-    const cp = cloneDeep(currProj)
-    cp.phases[phaseIdx].groups.splice(groupIdx, 1)
-    setCurrProj(cp)
-  }
+    if (currProj === null) return;
+    const cp = cloneDeep(currProj);
+    cp.phases[phaseIdx].groups.splice(groupIdx, 1);
+    setCurrProj(cp);
+  };
 
   const removeEvent = (phaseIdx: number, groupIdx: number, eventIdx: number) => {
-    if (currProj === null) return
-    const cp = cloneDeep(currProj)
-    cp.phases[phaseIdx].groups[groupIdx].events.splice(eventIdx, 1)
-    setCurrProj(cp)
-  }
+    if (currProj === null) return;
+    const cp = cloneDeep(currProj);
+    cp.phases[phaseIdx].groups[groupIdx].events.splice(eventIdx, 1);
+    setCurrProj(cp);
+  };
 
   const removeLink = (phaseIdx: number, groupIdx: number, eventIdx: number, linkIdx: number) => {
-    if (currProj === null) return
-    const cp = cloneDeep(currProj)
-    cp.phases[phaseIdx].groups[groupIdx].events[eventIdx].links.splice(linkIdx, 1)
-    setCurrProj(cp)
-  }
+    if (currProj === null) return;
+    const cp = cloneDeep(currProj);
+    cp.phases[phaseIdx].groups[groupIdx].events[eventIdx].links.splice(linkIdx, 1);
+    setCurrProj(cp);
+  };
+
+  const movePhase = (move: number, phaseIdx: number) => {
+    if (currProj === null) return;
+    const cp = cloneDeep(currProj);
+    [cp.phases[phaseIdx], cp.phases[phaseIdx - move]] = [cp.phases[phaseIdx - move], cp.phases[phaseIdx]];
+    setCurrProj(cp);
+  };
+
+  const moveGroup = (move: number, phaseIdx: number, groupIdx: number) => {
+    if (currProj === null) return;
+    const cp = cloneDeep(currProj);
+    [cp.phases[phaseIdx].groups[groupIdx], cp.phases[phaseIdx].groups[groupIdx - move]] = [
+      cp.phases[phaseIdx].groups[groupIdx - move],
+      cp.phases[phaseIdx].groups[groupIdx],
+    ];
+    setCurrProj(cp);
+  };
+
+  const moveEvent = (move: number, phaseIdx: number, groupIdx: number, eventIdx: number) => {
+    if (currProj === null) return;
+    const cp = cloneDeep(currProj);
+    [
+      cp.phases[phaseIdx].groups[groupIdx].events[eventIdx],
+      cp.phases[phaseIdx].groups[groupIdx].events[eventIdx - move],
+    ] = [
+      cp.phases[phaseIdx].groups[groupIdx].events[eventIdx - move],
+      cp.phases[phaseIdx].groups[groupIdx].events[eventIdx],
+    ];
+    setCurrProj(cp);
+  };
+
+  const moveLink = (move: number, phaseIdx: number, groupIdx: number, eventIdx: number, linkIdx: number) => {
+    if (currProj === null) return;
+    const cp = cloneDeep(currProj);
+    [
+      cp.phases[phaseIdx].groups[groupIdx].events[eventIdx].links[linkIdx],
+      cp.phases[phaseIdx].groups[groupIdx].events[eventIdx].links[linkIdx - move],
+    ] = [
+      cp.phases[phaseIdx].groups[groupIdx].events[eventIdx].links[linkIdx - move],
+      cp.phases[phaseIdx].groups[groupIdx].events[eventIdx].links[linkIdx],
+    ];
+    setCurrProj(cp);
+  };
 
   if (loading) {
     return (
@@ -132,7 +175,7 @@ function App() {
           <span className="visually-hidden">Loading...</span>
         </Spinner>
       </div>
-    )
+    );
   }
 
   const projectSelector = projectsList && (
@@ -143,7 +186,7 @@ function App() {
         </Dropdown.Item>
       ))}
     </DropdownButton>
-  )
+  );
 
   const projectInfo = currProj && (
     <div>
@@ -162,6 +205,24 @@ function App() {
               >
                 Remove
               </Button>
+              <Button
+                className="ml-2"
+                variant="warning"
+                size="sm"
+                onClick={() => movePhase(+1, phaseIndex)}
+                disabled={phaseIndex === 0}
+              >
+                Up
+              </Button>
+              <Button
+                className="ml-2"
+                variant="warning"
+                size="sm"
+                onClick={() => movePhase(-1, phaseIndex)}
+                disabled={phaseIndex === currProj.phases.length - 1}
+              >
+                Down
+              </Button>
             </div>
             <div className="ml-6">
               {phase.groups.map((group, groupIndex) => (
@@ -176,6 +237,24 @@ function App() {
                       disabled={currProj.phases[phaseIndex].groups.length === 1}
                     >
                       Remove
+                    </Button>
+                    <Button
+                      className="ml-2"
+                      variant="warning"
+                      size="sm"
+                      onClick={() => moveGroup(+1, phaseIndex, groupIndex)}
+                      disabled={groupIndex === 0}
+                    >
+                      Up
+                    </Button>
+                    <Button
+                      className="ml-2"
+                      variant="warning"
+                      size="sm"
+                      onClick={() => moveGroup(-1, phaseIndex, groupIndex)}
+                      disabled={groupIndex === currProj.phases[phaseIndex].groups.length - 1}
+                    >
+                      Down
                     </Button>
                   </div>
 
@@ -195,6 +274,24 @@ function App() {
                             disabled={currProj.phases[phaseIndex].groups[groupIndex].events.length === 1}
                           >
                             Remove
+                          </Button>
+                          <Button
+                            className="ml-2"
+                            variant="warning"
+                            size="sm"
+                            onClick={() => moveEvent(+1, phaseIndex, groupIndex, eventIndex)}
+                            disabled={eventIndex === 0}
+                          >
+                            Up
+                          </Button>
+                          <Button
+                            className="ml-2"
+                            variant="warning"
+                            size="sm"
+                            onClick={() => moveEvent(-1, phaseIndex, groupIndex, eventIndex)}
+                            disabled={eventIndex === currProj.phases[phaseIndex].groups[groupIndex].events.length - 1}
+                          >
+                            Down
                           </Button>
                         </div>
                         <div className="">{bold("Description: ", event.description)}</div>
@@ -217,6 +314,27 @@ function App() {
                                 >
                                   Remove
                                 </Button>
+                                <Button
+                                  className="ml-2"
+                                  variant="warning"
+                                  size="sm"
+                                  onClick={() => moveLink(+1, phaseIndex, groupIndex, eventIndex, linkIndex)}
+                                  disabled={linkIndex === 0}
+                                >
+                                  Up
+                                </Button>
+                                <Button
+                                  className="ml-2"
+                                  variant="warning"
+                                  size="sm"
+                                  onClick={() => moveLink(-1, phaseIndex, groupIndex, eventIndex, linkIndex)}
+                                  disabled={
+                                    linkIndex ===
+                                    currProj.phases[phaseIndex].groups[groupIndex].events[eventIndex].links.length - 1
+                                  }
+                                >
+                                  Down
+                                </Button>
                               </div>
 
                               <div className="">{bold("URL: ", link.href)}</div>
@@ -233,14 +351,14 @@ function App() {
         ))}
       </div>
     </div>
-  )
+  );
 
   return (
     <div className="container m-2 mx-auto">
       <div>{projectSelector}</div>
       <div>{projectInfo}</div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
