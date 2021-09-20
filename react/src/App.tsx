@@ -23,18 +23,18 @@ const wait = async (seconds: number) => new Promise<void>((resolve) => setTimeou
 
 const db: IProject[] = [project1, project2];
 
-const loadProjectsList = async () => {
+const DBLoadProjectsList = async () => {
   await wait(0.5);
   return db.map((project) => ({ name: project.name, id: project.id }));
 };
 
-const loadProject = async (id: number) => {
+const DBLoadProject = async (id: number) => {
   await wait(0.5);
   const project = db.find((p) => p.id === id)!;
   return cloneDeep(project);
 };
 
-const saveProject = async (project: IProject) => {
+const DBSaveProject = async (project: IProject) => {
   await wait(0.5);
   const index = db.findIndex((p) => p.id === project.id);
   db[index] = project;
@@ -86,7 +86,7 @@ function App() {
   const [proto, setProto] = useState<IProject | null>(null);
 
   const getProjectsList = async () => {
-    const projectsList = await loadProjectsList();
+    const projectsList = await DBLoadProjectsList();
     setProjectsList(projectsList);
   };
 
@@ -98,7 +98,7 @@ function App() {
 
   const getProject = async (id: number) => {
     setLoading(true);
-    const proj = await loadProject(id);
+    const proj = await DBLoadProject(id);
     setCurrProj(proj);
     setProto(cloneDeep(proj));
   };
@@ -240,8 +240,8 @@ function App() {
     const result = window.prompt("Enter the new project name", name);
     if (result) {
       newProject.name = result;
-      await saveProject(newProject);
-      await loadProject(newProject.id);
+      await DBSaveProject(newProject);
+      await DBLoadProject(newProject.id);
     }
   };
 
@@ -272,7 +272,7 @@ function App() {
   const commitChanges = async () => {
     if (currProj === null) return;
     setLoading(true);
-    await saveProject(currProj);
+    await DBSaveProject(currProj);
     await getProjectsList();
     setProto(currProj);
   };
