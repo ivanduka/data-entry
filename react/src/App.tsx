@@ -21,7 +21,7 @@ const useDidMountEffect = (func: () => void, deps: React.DependencyList | undefi
 
 const wait = async (seconds: number) => new Promise<void>((resolve) => setTimeout(() => resolve(), seconds * 1000));
 
-const db: ITimeline[] = [project1, project2];
+const db: IProject[] = [project1, project2];
 
 const loadProjectsList = async () => {
   await wait(0.5);
@@ -34,7 +34,7 @@ const loadProject = async (id: number) => {
   return cloneDeep(project);
 };
 
-const saveProject = async (project: ITimeline) => {
+const saveProject = async (project: IProject) => {
   await wait(0.5);
   const index = db.findIndex((p) => p.id === project.id);
   db[index] = project;
@@ -66,7 +66,7 @@ interface IPhase {
   groups: IGroup[];
 }
 
-interface ITimeline {
+interface IProject {
   id: number;
   name: string;
   phases: IPhase[];
@@ -82,8 +82,8 @@ const bold = (label: string, value: string) => (
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const [projectsList, setProjectsList] = useState<{ name: string; id: number }[]>([]);
-  const [currProj, setCurrProj] = useState<ITimeline | null>(null);
-  const [proto, setProto] = useState<ITimeline | null>(null);
+  const [currProj, setCurrProj] = useState<IProject | null>(null);
+  const [proto, setProto] = useState<IProject | null>(null);
 
   const getProjectsList = async () => {
     const projectsList = await loadProjectsList();
