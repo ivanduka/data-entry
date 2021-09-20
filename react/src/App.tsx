@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import project1 from "./data/project1.json";
 import project2 from "./data/project2.json";
 import { Spinner, DropdownButton, Dropdown, Button } from "react-bootstrap";
-import { cloneDeep, isEqual } from "lodash-es";
+import { cloneDeep } from "lodash-es";
 
 const run = (f: () => void) => {
   (async () => {
@@ -27,41 +27,49 @@ const db: { [name: string]: ITimeline } = {
 };
 
 const loadProjectsList = async () => {
-  await wait(0);
+  await wait(0.5);
   return Object.keys(db);
 };
 
 const loadProject = async (name: string) => {
-  await wait(0);
+  await wait(0.5);
   return cloneDeep(db[name]);
 };
 
 const saveProject = async (name: string, project: ITimeline) => {
-  await wait(0);
+  await wait(0.5);
   db[name] = cloneDeep(project);
 };
 
+interface ILink {
+  description: string;
+  href: string;
+}
+
+interface IEvent {
+  name: string;
+  description: string;
+  icon: string;
+  dateStart: string;
+  dateEnd: string | null;
+  dateDue: boolean;
+  links: ILink[];
+}
+
+interface IGroup {
+  name: string;
+  icon: string;
+  events: IEvent[];
+}
+
+interface IPhase {
+  name: string;
+  groups: IGroup[];
+}
+
 interface ITimeline {
   timelineName: string;
-  phases: {
-    name: string;
-    groups: {
-      name: string;
-      icon: string;
-      events: {
-        name: string;
-        description: string;
-        icon: string;
-        dateStart: string;
-        dateEnd: string | null;
-        dateDue: boolean;
-        links: {
-          description: string;
-          href: string;
-        }[];
-      }[];
-    }[];
-  }[];
+  phases: IPhase[];
 }
 
 const bold = (label: string, value: string) => (
@@ -168,6 +176,60 @@ function App() {
     setCurrProj(cp);
   };
 
+  const linkPlaceholder: ILink = {
+    description: "Enter the link label",
+    href: "Enter the link URL",
+  };
+
+  const addLink = (phaseIdx: number, groupIdx: number, eventIdx: number) => {
+    if (currProj === null) return;
+    const cp = cloneDeep(currProj);
+    cp.phases[phaseIdx].groups[groupIdx].events[eventIdx].links.push(cloneDeep(linkPlaceholder));
+    setCurrProj(cp);
+  };
+
+  const eventPlaceholder: IEvent = {
+    name: "Enter the event name",
+    description: "Enter the event description",
+    icon: "Enter the event icon URL",
+    dateStart: "0001-01-01",
+    dateEnd: null,
+    dateDue: false,
+    links: [],
+  };
+
+  const addEvent = (phaseIdx: number, groupIdx: number) => {
+    if (currProj === null) return;
+    const cp = cloneDeep(currProj);
+    cp.phases[phaseIdx].groups[groupIdx].events.push(cloneDeep(eventPlaceholder));
+    setCurrProj(cp);
+  };
+
+  const groupPlaceholder: IGroup = {
+    name: "Enter the group name",
+    icon: "Enter the group icon URL",
+    events: [cloneDeep(eventPlaceholder)],
+  };
+
+  const addGroup = (phaseIdx: number) => {
+    if (currProj === null) return;
+    const cp = cloneDeep(currProj);
+    cp.phases[phaseIdx].groups.push(cloneDeep(groupPlaceholder));
+    setCurrProj(cp);
+  };
+
+  const phasePlaceholder: IPhase = {
+    name: "Enter a phase name",
+    groups: [cloneDeep(groupPlaceholder)],
+  };
+
+  const addPhase = () => {
+    if (currProj === null) return;
+    const cp = cloneDeep(currProj);
+    cp.phases.push(cloneDeep(phasePlaceholder));
+    setCurrProj(cp);
+  };
+
   if (loading) {
     return (
       <div className="container m-2 mx-auto flex justify-center justify-center">
@@ -190,7 +252,7 @@ function App() {
 
   const projectInfo = currProj && (
     <div>
-      <div className="mb-2">{bold("Project: ", currProj.timelineName)}</div>
+      <div className="my-4">{bold("Project: ", currProj.timelineName)}</div>
       <div>
         {currProj.phases.map((phase, phaseIndex) => (
           <div className="border-24 border-2 border-black rounded-2 p-2 mb-16 bg-red-200" key={phase.name}>
@@ -340,15 +402,41 @@ function App() {
                               <div className="">{bold("URL: ", link.href)}</div>
                             </div>
                           ))}
+
+                          <div className="my-2">
+                            <Button
+                              className=""
+                              variant="success"
+                              size="sm"
+                              onClick={() => addLink(phaseIndex, groupIndex, eventIndex)}
+                            >
+                              Add Link
+                            </Button>
+                          </div>
                         </div>
                       </div>
                     ))}
+                    <div className="my-4">
+                      <Button className="" variant="success" size="sm" onClick={() => addEvent(phaseIndex, groupIndex)}>
+                        Add Event
+                      </Button>
+                    </div>
                   </div>
                 </div>
               ))}
+              <div className="my-4">
+                <Button className="" variant="success" size="sm" onClick={() => addGroup(phaseIndex)}>
+                  Add Group
+                </Button>
+              </div>
             </div>
           </div>
         ))}
+        <div className="my-4">
+          <Button className="" variant="success" size="sm" onClick={() => addPhase()}>
+            Add Phase
+          </Button>
+        </div>
       </div>
     </div>
   );
