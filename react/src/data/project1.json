@@ -1,5 +1,6 @@
 {
-  "timelineName": "Project 1",
+  "id": 1,
+  "name": "Project 1",
   "phases": [
     {
       "name": "Phase 1",

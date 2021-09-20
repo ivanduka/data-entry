@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import project1 from "./data/project1.json";
 import project2 from "./data/project2.json";
 import { Spinner, DropdownButton, Dropdown, Button } from "react-bootstrap";
-import { cloneDeep } from "lodash-es";
+import { cloneDeep, isEqual } from "lodash-es";
 
 const run = (f: () => void) => {
   (async () => {
@@ -21,24 +21,23 @@ const useDidMountEffect = (func: () => void, deps: React.DependencyList | undefi
 
 const wait = async (seconds: number) => new Promise<void>((resolve) => setTimeout(() => resolve(), seconds * 1000));
 
-const db: { [name: string]: ITimeline } = {
-  "Project 1": project1,
-  "Nova Gas Transmission Ltd. - West Path Delivery 2023": project2,
-};
+const db: ITimeline[] = [project1, project2];
 
 const loadProjectsList = async () => {
   await wait(0.5);
-  return Object.keys(db);
+  return db.map((project) => ({ name: project.name, id: project.id }));
 };
 
-const loadProject = async (name: string) => {
+const loadProject = async (id: number) => {
   await wait(0.5);
-  return cloneDeep(db[name]);
+  const project = db.find((p) => p.id === id)!;
+  return cloneDeep(project);
 };
 
-const saveProject = async (name: string, project: ITimeline) => {
+const saveProject = async (project: ITimeline) => {
   await wait(0.5);
-  db[name] = cloneDeep(project);
+  const index = db.findIndex((p) => p.id === project.id);
+  db[index] = project;
 };
 
 interface ILink {
@@ -68,7 +67,8 @@ interface IPhase {
 }
 
 interface ITimeline {
-  timelineName: string;
+  id: number;
+  name: string;
   phases: IPhase[];
 }
 
@@ -81,26 +81,24 @@ const bold = (label: string, value: string) => (
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
-  const [projectsList, setProjectsList] = useState<string[]>([]);
+  const [projectsList, setProjectsList] = useState<{ name: string; id: number }[]>([]);
   const [currProj, setCurrProj] = useState<ITimeline | null>(null);
   const [proto, setProto] = useState<ITimeline | null>(null);
 
-  useEffect(
-    () =>
-      run(async () => {
-        const projectsList = await loadProjectsList();
-        setProjectsList(projectsList);
-      }),
-    [],
-  );
+  const getProjectsList = async () => {
+    const projectsList = await loadProjectsList();
+    setProjectsList(projectsList);
+  };
+
+  useEffect(() => run(getProjectsList), []);
 
   useDidMountEffect(() => {
     setLoading(false);
-  }, [projectsList, currProj]);
+  }, [projectsList, currProj, proto]);
 
-  const getProject = async (name: string) => {
+  const getProject = async (id: number) => {
     setLoading(true);
-    const proj = await loadProject(name);
+    const proj = await loadProject(id);
     setCurrProj(proj);
     setProto(cloneDeep(proj));
   };
@@ -232,9 +230,8 @@ function App() {
 
   const editProject = () => {
     if (currProj === null) return;
-    const result = window.prompt("Enter the new project name", currProj.timelineName) || currProj.timelineName;
     const cp = cloneDeep(currProj);
-    cp.timelineName = result;
+    cp.name = window.prompt("Enter the new project name", currProj.name) || currProj.name;
     setCurrProj(cp);
   };
 
@@ -245,6 +242,14 @@ function App() {
     const cp = cloneDeep(currProj);
     cp.phases[phaseIdx].name = result;
     setCurrProj(cp);
+  };
+
+  const commitChanges = async () => {
+    if (currProj === null) return;
+    setLoading(true);
+    await saveProject(currProj);
+    await getProjectsList();
+    setProto(currProj);
   };
 
   if (loading) {
@@ -258,19 +263,26 @@ function App() {
   }
 
   const projectSelector = projectsList && (
-    <DropdownButton className="my-2" title={(currProj && currProj.timelineName) || "Choose a project"}>
-      {projectsList.map((p) => (
-        <Dropdown.Item key={p} as="button" onClick={() => getProject(p)}>
-          {p}
-        </Dropdown.Item>
-      ))}
-    </DropdownButton>
+    <div className="my-2 flex items-center">
+      <DropdownButton className="inline" title={(currProj && currProj.name) || "Choose a project"}>
+        {projectsList.map(({ id, name }) => (
+          <Dropdown.Item key={id} as="button" onClick={() => getProject(id)}>
+            {name}
+          </Dropdown.Item>
+        ))}
+      </DropdownButton>
+      {!isEqual(currProj, proto) && (
+        <Button className="ml-2" variant="secondary" size="sm" onClick={commitChanges}>
+          Save changes to the current project
+        </Button>
+      )}
+    </div>
   );
 
   const projectInfo = currProj && (
     <div>
       <div className="flex items-center my-4">
-        <div className="font-bold">{currProj.timelineName}</div>
+        <div className="font-bold">{currProj.name}</div>
         <Button className="ml-2" variant="primary" size="sm" onClick={() => editProject()}>
           Edit name
         </Button>
