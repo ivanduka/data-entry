@@ -228,6 +228,31 @@ function App() {
     setCurrProj(cp);
   };
 
+  const projectPlaceholder: IProject = {
+    id: Math.random(),
+    name: "A new project",
+    phases: [cloneDeep(phasePlaceholder)],
+  };
+
+  const addProject = async (name: string) => {
+    const newProject = cloneDeep(projectPlaceholder);
+    newProject.id = Math.random();
+    const result = window.prompt("Enter the new project name", name);
+    if (result) {
+      newProject.name = result;
+      await saveProject(newProject);
+      await loadProject(newProject.id);
+    }
+  };
+
+  const resetProject = async () => {
+    if (currProj === null) return;
+    setLoading(true);
+    console.log(1)
+    await getProject(currProj.id);
+    console.log(2)
+  };
+
   const editProject = () => {
     if (currProj === null) return;
     const cp = cloneDeep(currProj);
@@ -272,9 +297,14 @@ function App() {
         ))}
       </DropdownButton>
       {!isEqual(currProj, proto) && (
-        <Button className="ml-2" variant="secondary" size="sm" onClick={commitChanges}>
-          Save changes to the current project
-        </Button>
+        <>
+          <Button className="ml-2" variant="secondary" size="sm" onClick={commitChanges}>
+            Save changes
+          </Button>
+          <Button className="ml-2" variant="danger" size="sm" onClick={resetProject}>
+            Reset
+          </Button>
+        </>
       )}
     </div>
   );
