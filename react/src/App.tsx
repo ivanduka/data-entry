@@ -23,7 +23,7 @@ const wait = async (seconds: number) => new Promise<void>((resolve) => setTimeou
 
 const db: IProject[] = [project1, project2];
 
-const waitingTime = 0.5
+const waitingTime = 0.5;
 
 const DBLoadProjectsList = async () => {
   await wait(waitingTime);
@@ -42,10 +42,10 @@ const DBSaveProject = async (project: IProject) => {
   db[index] = project;
 };
 
-const DBAddProject = async(project: IProject) => {
+const DBAddProject = async (project: IProject) => {
   await wait(waitingTime);
-  db.push(project)
-}
+  db.push(project);
+};
 
 interface ILink {
   description: string;
@@ -197,7 +197,7 @@ function App() {
     name: "Enter the event name",
     description: "Enter the event description",
     icon: "Enter the event icon URL",
-    dateStart: "0001-01-01",
+    dateStart: "",
     dateEnd: null,
     dateDue: false,
     links: [],
@@ -296,16 +296,9 @@ function App() {
 
   const projectSelector = projectsList && (
     <div className="my-2 flex items-center">
-      <DropdownButton className="inline" title={(currProj && currProj.name) || "Choose a project"}>
-        {projectsList.map(({ id, name }) => (
-          <Dropdown.Item key={id} as="button" onClick={() => getProject(id)}>
-            {name}
-          </Dropdown.Item>
-        ))}
-      </DropdownButton>
       {!isEqual(currProj, proto) ? (
         <>
-          <Button className="ml-2" variant="secondary" size="sm" onClick={commitChanges}>
+          <Button className="" variant="secondary" size="sm" onClick={commitChanges}>
             Save changes
           </Button>
           <Button className="ml-2" variant="danger" size="sm" onClick={resetProject}>
@@ -313,9 +306,18 @@ function App() {
           </Button>
         </>
       ) : (
-        <Button className="ml-2" variant="secondary" size="sm" onClick={addProject}>
-          Add a new project
-        </Button>
+        <>
+          <DropdownButton className="inline" title={(currProj && currProj.name) || "Choose a project"}>
+            {projectsList.map(({ id, name }) => (
+              <Dropdown.Item key={id} as="button" onClick={() => getProject(id)}>
+                {name}
+              </Dropdown.Item>
+            ))}
+          </DropdownButton>
+          <Button className="ml-2" variant="secondary" size="sm" onClick={addProject}>
+            Add a new project
+          </Button>
+        </>
       )}
     </div>
   );
@@ -436,7 +438,7 @@ function App() {
                         </div>
                         <div className="">{bold("Description: ", event.description)}</div>
                         <div className="">{bold("Icon: ", event.icon)}</div>
-                        <div className="">{bold("Start date: ", event.dateStart)}</div>
+                        <div className="">{bold("Start date: ", event.dateStart || "TBD")}</div>
                         <div className="">{bold("End date: ", event.dateEnd || "none")}</div>
                         <div className="">{bold("Event due: ", event.dateDue ? "yes" : "no")}</div>
                         <div className="ml-6 mt-2">
